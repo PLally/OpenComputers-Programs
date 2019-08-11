@@ -16,7 +16,7 @@ local abs = math.abs
 local args = {...}
 local file = io.open(args[1], "rb")
 
-print("Decoding "+args[1]) 
+print("Decoding "..args[1]) 
 
 local function isPng(file) 
     for k, v in pairs(PNG_SIGNATURE) do
@@ -64,7 +64,7 @@ end
 
 
 local function getBytesPerPixel(colorType, bitDepth)
-    return math.floor(bitDepth/8) * colorTypeSizes[colorType]
+    return math.floor(bitDepth/8) * COLOR_TYPE_SIZES[colorType]
 
 end
 local function paethPredictor(a, b, c)
