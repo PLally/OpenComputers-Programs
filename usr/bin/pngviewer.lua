@@ -1,4 +1,4 @@
--- requires tier a data card
+-- requires tier a data card and lua 5.3
 -- TODO support entire png spec, things such as PLTE color type and interlacing
 --constants
 local PNG_SIGNATURE = {137, 80, 78, 71, 13, 10, 26, 10}
