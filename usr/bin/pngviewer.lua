@@ -133,9 +133,9 @@ local function decodePng(file)
                 end
             elseif filterType == 2 then  -- Up(x) + Prior(x)
                 for j=1, bpp do
-                    local byte = ( string.byte(data, i) + (previousScanline[pos - bpp] or 0)  ) % 256
+                    local byte = ( string.byte(data, i) + (previousScanline[pos] or 0)  ) % 256
         
-                    currentScanline[#currentScanline+1] = byte
+                    currentScanline[pos] = byte
                     pixelBytes[j]  = byte
                     i = i + 1
                     pos = pos + 1
@@ -159,7 +159,7 @@ local function decodePng(file)
                     
                     local byte = ( string.byte(data, i) + paethPredictor(left, above, aboveLeft) ) % 256
               
-                    currentScanline[#currentScanline+1] = byte
+                    currentScanline[pos] = byte
                     pixelBytes[j] = byte
                     i = i + 1
                     pos = pos + 1
