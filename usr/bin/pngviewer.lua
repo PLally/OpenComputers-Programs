@@ -58,7 +58,7 @@ local function readChunk(png, file)
     elseif chunkType == "IDAT" then
         png.idat = png.idat .. file:read(length)
     elseif chunkType == "PLTE" then
-        for i=0, length/3-3 do
+        for i=0, length/3-1 do
             png.plte[i] = readBytes(file, 3)
         end
     else
