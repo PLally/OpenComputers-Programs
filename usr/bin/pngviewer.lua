@@ -90,7 +90,7 @@ local function decodePng(file)
     local png = {}
     png.idat = ""
     png.plte = {}
-    repeat until readChunk(png, file) ~= "IEND" 
+    repeat until readChunk(png, file) == "IEND" 
     
     local data, err  = inflate(png.idat)
     if err ~= nil then
