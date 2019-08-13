@@ -186,7 +186,7 @@ local function decodePng(file)
             elseif colorType == 0 or colorType == 4 then
                 local c = pixelValues[1]
                 pixel = (c<<16)+(c<<8)+c
-            elseif colorType == 6 then
+            elseif colorType == 3 then
                 pixel = plte[pixelValues[1]]
             end
 
