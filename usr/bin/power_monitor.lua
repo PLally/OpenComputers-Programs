@@ -2,6 +2,8 @@ local power_monitor = require("power_monitor")
 local component = require("component")
 local induction_matrix = component.induction_matrix
 local gpu = component.gpu
+local sides = require("sides")
+local redstone = component.redstone
 monitor = power_monitor.Monitor:new(induction_matrix)
 
 gpu.setResolution(80, 25)
