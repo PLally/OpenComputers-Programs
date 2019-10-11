@@ -45,7 +45,7 @@ function Monitor.prettyPrint(number)
 end
 
 function Monitor:getPercentFull() 
-    return induction_matrix:getEnergy() / induction_matrix.getMaxEnergy()
+    return ( induction_matrix:getEnergy() / induction_matrix.getMaxEnergy() ) * 100
 end
 export.Monitor = Monitor
 return export
