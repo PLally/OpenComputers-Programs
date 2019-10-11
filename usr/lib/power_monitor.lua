@@ -1,9 +1,10 @@
 local Monitor = {}
-local Monitor.__index = Monitor
+Monitor.__index = Monitor
 local export = {}
 
 -- Monitor object
 function Monitor:new(component)
+    local f = {}
     f.component = component
     f.energy = 0 
 
@@ -33,13 +34,13 @@ function Monitor.prettyPrint(number)
     local trillions = number/1e12
     ---  quadrillions?
     if trillions >= 1 then
-        return string.format("%v trillion", trillions)
+        return string.format("%.3f trillion", trillions)
     elseif billions >= 1 then
-        return string.format("%v billions", billions)
+        return string.format("%.3f billion", billions)
     elseif millions >= 1 then
-        return string.format("%v millions", millions)
+        return string.format("%.3f million", millions)
     elseif thousands >= 1 then
-        return string.format("%v thousands", thousands)
+        return string.format("%.3f thousand", thousands)
     end
 end
 
