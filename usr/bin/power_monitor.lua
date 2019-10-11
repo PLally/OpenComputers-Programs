@@ -27,7 +27,7 @@ while true do
         generatorOn( false )
     end
 
-    local percentText = tostring(math.floor(percentFull))
-    gpu.set( 1, 1, string.format( "%-10s  %-10s%% %s-3s", text, percentText, onOff ) )
+    local percentText = tostring(math.floor(percentFull)).."%%"
+    gpu.set( 1, 1, string.format( "%-10s  %-10s %-3s", text, percentText, onOff ) )
     os.sleep(0.2)
 end
