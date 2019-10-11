@@ -14,33 +14,75 @@ function Monitor:new(component)
 end
 
 function Monitor:getEnergy(units)
-    return self.component.getEnergy()
+    local energy = self.component.getEnergy()
+    if type(energy) ~= "number" then
+        return print(energy)
+    end
+    return energy or 0
 end
 
 function Monitor:getMaxEnergy(units)
-    return self.component.getMaxEnergy()
+    local energy = self.component.getMaxEnergy()
+    if type(energy) ~= "number" then
+        return print(energy)
+    end
+    return energy or 0
 end
 
+function Monitor:getOutput(energy) 
+    local energy = self.component.getOutput()
+    if type(energy) ~= "number" then
+        return print(energy)
+    end
+    return energy or 0
+end
+
+function Monitor:getInput(energy) 
+    local energy = self.component.getInput()
+    if type(energy) ~= "number" then
+        return print(energy)
+    end
+    return energy or 0
+end
 function Monitor:registerEvent(identifier, callback) 
     self.events[identifier] = {
         callback = callback
     }
 end
 
-function Monitor.prettyPrint(number)
+local prettyPrintStrings = {
+    long = {
+        "%.3f thousand",
+        "%.3f million",
+        "%.3f billion",
+        "%.3f trillion"
+   
+    },
+    short = {
+        "%.3fK",
+        "%.3fM",
+        "%.3fG",
+        "%.3fT"
+    }
+}
+function Monitor.prettyPrint(number, mode)
+    mode = mode or "long"
+    number = number*0.4 -- convert to rf
+
     local millions = number/1e6
     local thousands = number/1e3
     local billions = number/1e9
     local trillions = number/1e12
     ---  quadrillions?
+    local fmtStrings = prettyPrintStrings[mode]
     if trillions >= 1 then
-        return string.format("%.3f trillion", trillions)
+        return string.format(fmtStrings[1], trillions)
     elseif billions >= 1 then
-        return string.format("%.3f billion", billions)
+        return string.format(fmtStrings[2],, billions)
     elseif millions >= 1 then
-        return string.format("%.3f million", millions)
+        return string.format(fmtStrings[3],, millions)
     elseif thousands >= 1 then
-        return string.format("%.3f thousand", thousands)
+        return string.format(fmtStrings[3], thousands)
     end
 end
 
