@@ -48,4 +48,4 @@ function Monitor:getPercentFull()
     return induction_matrix:getEnergy() / induction_matrix.getMaxEnergy()
 end
 export.Monitor = Monitor
-return Export
+return export
