@@ -76,14 +76,15 @@ function Monitor.prettyPrint(number, mode)
     ---  quadrillions?
     local fmtStrings = prettyPrintStrings[mode]
     if trillions >= 1 then
-        return string.format(fmtStrings[1], trillions)
+        return string.format(fmtStrings[4], trillions)
     elseif billions >= 1 then
-        return string.format(fmtStrings[2],, billions)
+        return string.format(fmtStrings[3], billions)
     elseif millions >= 1 then
-        return string.format(fmtStrings[3],, millions)
+        return string.format(fmtStrings[2], millions)
     elseif thousands >= 1 then
-        return string.format(fmtStrings[3], thousands)
+        return string.format(fmtStrings[1], thousands)
     end
+    return string.format("%.3f")
 end
 
 function Monitor:getPercentFull() 
